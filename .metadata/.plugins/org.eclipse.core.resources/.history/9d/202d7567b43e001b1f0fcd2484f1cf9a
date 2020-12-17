@@ -1,0 +1,46 @@
+package Selenium_grid;
+
+import java.net.URL;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+
+public class seleniumGridForChrome {
+	
+	DesiredCapabilities cap= DesiredCapabilities.chrome();
+	  
+    cap.setPlatform(org.openqa.selenium.Platform.WINDOWS);
+
+    URL url=new URL("http://192.168.56.1:4444/wd/hub");
+
+    WebDriver driver =new RemoteWebDriver(url, cap);
+    
+     driver.get("https://www.google.com/");
+
+	String expectedTitle = "Google";
+		
+    String actualTitle=driver.getTitle();
+   
+   System.out.println("ExpectedTitle: "+expectedTitle+"\nActualTittle: "+actualTitle);
+  
+   if(actualTitle.equals(expectedTitle))
+   {
+ 	      System.out.println("Pass>> Title gets matched");
+
+   }
+   else
+   {
+	     	      System.out.println("Failed !>> Title doesn't matched");
+
+   }
+   
+   driver.quit();
+   }
+
+    
+   
+
+	}}
+
+}
